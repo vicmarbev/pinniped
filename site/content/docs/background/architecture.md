@@ -83,23 +83,6 @@ The
 API group contains the Kubernetes custom resources that configure the Pinniped
 Concierge's authenticators.
 
-## Cluster Integration Strategies
-
-Pinniped will issue a cluster credential by leveraging cluster-specific
-functionality. In the longer term,
-Pinniped hopes to contribute and leverage upstream Kubernetes extension points that
-cleanly enable this integration.
-
-Pinniped supports the following cluster integration strategies.
-
-* Token Credential Request API: Pinniped hosts a credential exchange API endpoint via a Kubernetes aggregated API server.
-This API returns a new cluster-specific credential using the cluster's signing keypair to
-issue short-lived cluster certificates. (In the future, when the Kubernetes CSR API
-provides a way to issue short-lived certificates, then the Pinniped credential exchange API
-will use that instead of using the cluster's signing keypair.)
-* Impersonation Proxy: Pinniped hosts an [impersonation](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#user-impersonation)
-proxy that sends requests to the Kubernetes API server with user information and permissions based on a token. 
-
 ## kubectl Integration
 
 With any of the above IDPs, authentication methods, and cluster integration strategies, `kubectl` commands receive the
